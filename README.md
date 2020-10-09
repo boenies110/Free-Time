@@ -1,2 +1,2 @@
-# Snake
-Snake in Java
+# Freetime
+1. Snake in Java
