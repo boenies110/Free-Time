@@ -34,7 +34,7 @@ public class Draw extends JLabel{
         }
         
         // Draw Snake Head
-        g.setColor(new Color(0, 153, 0));
+        g.setColor(new Color(0, 0, 0));
         p = Snake.ptc(Snake.head.getX(), Snake.head.getY());
         g.fillRect(p.x, p.y, 32, 32);
         
