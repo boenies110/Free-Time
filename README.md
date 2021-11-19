@@ -1,2 +1,9 @@
 # Freetime
-1. Snake in Java
+1. Java
+  1.1 Snake
+  1.2 TicTacToe
+  1.3 Android
+    1.3.1 PokeHelper
+  1.4 JavaFX
+3. C#
+  3.1 Calculator
