@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">newPokémonHelper</string>
+    <string name="TTop">PokéHelper 2</string>
+    <string name="btnTest">Test</string>
+    <string name="btnWeaknesses">Schwächen ermitteln</string>
+    <string name="btnClearTable">Clear</string>
+    <string name="PkmnName">Name des Pokémon</string>
+    <string name="type1">Typ 1</string>
+    <string name="type2">Typ 2</string>
+</resources>

@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/TTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pokémon Helper Alpha"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />     <!--TTitle-->
+
+    <EditText
+        android:id="@+id/eTType1"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:hint="Typ1"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/eTPokemonNameInput"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1" />     <!--eTType1-->
+
+    <EditText
+        android:id="@+id/eTType2"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:hint="Typ2"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        app:layout_constraintEnd_toEndOf="@+id/eTPokemonNameInput"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/eTType1" />      <!--eTType2-->
+
+    <EditText
+        android:id="@+id/eTPokemonNameInput"
+        android:layout_width="225dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:hint="Gegner Pokémon"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/eTType1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.666" />       <!--eTPokemonNameInput-->
+
+    <Button
+        android:id="@+id/btnCalcWeakness"
+        android:layout_width="225dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Schwächen ermitteln"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eTType1" />       <!--btnCalcWeakness-->
+
+    <TableLayout
+        android:id="@+id/TLWeaknessResults"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/TTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCalcWeakness"
+        app:layout_constraintVertical_bias="0.02">
+
+        <TableRow
+            android:id="@+id/TRHead"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:isScrollContainer="false"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/THeadVeryGood"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="sehr gut"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/THeadGood"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="gut"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/THeadNormal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="normal"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/THeadBad"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:maxWidth="100dp"
+                android:minWidth="60dp"
+                android:text="schlecht"
+                android:textSize="17sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/TRResults01"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/TVeryGoodResult01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TGoodResult01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TNormalResult01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TBadResult01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/TRResults02"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/TVeryGoodResult02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TGoodResult02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TNormalResult02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TBadResult02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/TRResults03"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/TVeryGoodResult03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TGoodResult03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TNormalResult03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TBadResult03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/TRResults04"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/TVeryGoodResult04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TGoodResult04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TNormalResult04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TBadResult04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/TRResults05"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/TVeryGoodResult05"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TGoodResult05"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TNormalResult05"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TBadResult05"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/TRResults06"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/TVeryGoodResult06"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TGoodResult06"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TNormalResult06"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TBadResult06"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/TRResults07"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/TVeryGoodResult07"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TGoodResult07"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TNormalResult07"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TBadResult07"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/TRResults08"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/TVeryGoodResult08"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TGoodResult08"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TNormalResult08"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TBadResult08"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/TRResults09"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/TVeryGoodResult09"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TGoodResult09"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TNormalResult09"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TBadResult09"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/TRResults10"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/TVeryGoodResult10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TGoodResult10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TNormalResult10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TBadResult10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/TRResults11"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/TVeryGoodResult11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TGoodResult11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TNormalResult11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TBadResult11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/TRResults12"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/TVeryGoodResult12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TGoodResult12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TNormalResult12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TBadResult12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/TRResults13"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/TVeryGoodResult13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TGoodResult13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TNormalResult13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TBadResult13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/TRResults14"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/TVeryGoodResult14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TGoodResult14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TNormalResult14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TBadResult14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/TRResults15"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/TVeryGoodResult15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TGoodResult15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TNormalResult15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TBadResult15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/TRResults16"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/TVeryGoodResult16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TGoodResult16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TNormalResult16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/TBadResult16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=""
+                android:textSize="14sp" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TableLayout
+        android:id="@+id/TLTestButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/TTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TLWeaknessResults">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btnClearTable"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="5dp"
+                android:text="Clear" />
+
+            <Button
+                android:id="@+id/btnTest"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
+                android:text="Test" />
+        </TableRow>
+
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
